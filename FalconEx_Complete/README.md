@@ -54,7 +54,7 @@ sell 104.00 200
 - Support for multiple instruments
 
 ## 👨‍💻 Author
-Islombek Shamsiev — [GitHub](https://github.com/) | [LinkedIn](https://linkedin.com/in/)
+Islombek Shamsiev — [GitHub](https://github.com/islombekshamsi) | [LinkedIn]([https://linkedin.com/in/](https://www.linkedin.com/in/islom-shamsiev/))
 
 ## 📄 License
 MIT License
