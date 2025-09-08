@@ -1,0 +1,9 @@
+# Basic config for demo
+symbol: DEMO
+date: 2025-09-03
+latency_ticks: 2
+slip_bps: 0.5
+fee_bps: 0.0
+order_qty: 100
+mr_window_short: 10
+mr_window_long: 50

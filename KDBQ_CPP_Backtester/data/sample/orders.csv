@@ -1,0 +1,5 @@
+ts,sym,side,type,px,qty,tif
+2025-09-03T09:30:02,DEMO,buy,market,99.990000,150,IOC
+2025-09-03T09:30:06,DEMO,sell,market,99.920000,200,IOC
+2025-09-03T09:30:12,DEMO,buy,limit,99.87,100,GFD
+2025-09-03T09:30:16,DEMO,sell,limit,99.82,120,GFD
