@@ -65,4 +65,6 @@ q report.q fills:`../artifact/fills.csv quotes:`../data/sample/quotes.csv out:`.
 
 Feel free to connect or reach out!
 
+LinkedIn: https://www.linkedin.com/in/islom-shamsiev/
+
 Happy Coding!
