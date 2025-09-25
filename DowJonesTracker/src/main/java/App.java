@@ -73,7 +73,7 @@ public class App extends Application {
                     System.out.println("Error fetching stock data: " + e.getMessage());
                 }
             }
-        }, 0, 5000); // every 5 seconds
+        }, 0, 10000); // every 10 seconds
     }
 
     public static void main(String[] args) {
