@@ -1,18 +1,39 @@
-import yfinance as yf
+from __future__ import annotations
+
+from typing import Iterable, Sequence
+
 import numpy as np
 import pandas as pd
+import yfinance as yf
 
-def get_portfolio_metrics(tickers, weights):
-    raw = yf.download(tickers, period="3mo", group_by="ticker", auto_adjust=True)
+def _validate_inputs(tickers: Sequence[str], weights: Sequence[float]) -> None:
+    if not tickers:
+        raise ValueError("At least one ticker is required.")
+    if not weights:
+        raise ValueError("At least one weight is required.")
+    if len(tickers) != len(weights):
+        raise ValueError("Tickers and weights must have the same length.")
+    if any(w < 0 for w in weights):
+        raise ValueError("Weights must be non-negative.")
+
+
+def get_portfolio_metrics(tickers: Sequence[str], weights: Sequence[float]) -> dict[str, float]:
+    """Compute basic portfolio risk metrics from recent prices."""
+    _validate_inputs(tickers, weights)
+
+    raw = yf.download(list(tickers), period="3mo", group_by="ticker", auto_adjust=True)
 
     if isinstance(raw.columns, pd.MultiIndex):
         data = pd.concat([raw[ticker]["Close"] for ticker in tickers], axis=1)
     else:
         data = raw["Close"].to_frame() if len(tickers) == 1 else raw[tickers]
 
-    data.columns = tickers
+    data.columns = list(tickers)
     returns = data.pct_change().dropna()
-    weighted_returns = returns @ np.array(weights)
+    if returns.empty:
+        raise ValueError("Not enough price data to compute returns.")
+    weights_array = np.array(weights, dtype=float)
+    weighted_returns = returns @ weights_array
     portfolio_returns = pd.Series(weighted_returns)
 
     mean_return = portfolio_returns.mean()
